@@ -1,0 +1,7 @@
+**/bin/*
+**/obj/*
+.vs/
+
+MovieAPI/.vs
+appsettings.json
+appsettings.Development.json
