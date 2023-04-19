@@ -13,7 +13,7 @@ namespace MovieAPI.Models
         public int PersonId { get; set; }
         [Required]
         [StringLength(25)]
-        public string Name { get; set; }
+        public string FirstName { get; set; }
         [Required]
         [StringLength(50)]
         public string Email { get; set; }

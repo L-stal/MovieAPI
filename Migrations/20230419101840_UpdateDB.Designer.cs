@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MovieAPI.Data;
 
@@ -10,9 +11,11 @@ using MovieAPI.Data;
 namespace MovieAPI.Migrations
 {
     [DbContext(typeof(MovieAPIContex))]
-    partial class MovieAPIContexModelSnapshot : ModelSnapshot
+    [Migration("20230419101840_UpdateDB")]
+    partial class UpdateDB
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -52,9 +55,6 @@ namespace MovieAPI.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MovieId"));
 
-                    b.Property<int>("GenreId")
-                        .HasColumnType("int");
-
                     b.Property<string>("MovieLink")
                         .IsRequired()
                         .HasMaxLength(250)
@@ -69,8 +69,6 @@ namespace MovieAPI.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("MovieId");
-
-                    b.HasIndex("GenreId");
 
                     b.HasIndex("PersonId");
 
@@ -151,19 +149,11 @@ namespace MovieAPI.Migrations
 
             modelBuilder.Entity("MovieAPI.Models.Movie", b =>
                 {
-                    b.HasOne("MovieAPI.Models.Genre", "Genre")
-                        .WithMany()
-                        .HasForeignKey("GenreId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("MovieAPI.Models.Person", "Person")
                         .WithMany()
                         .HasForeignKey("PersonId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Genre");
 
                     b.Navigation("Person");
                 });
