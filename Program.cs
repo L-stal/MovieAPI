@@ -79,27 +79,46 @@ namespace MovieAPI
                               };
                 return await pRating.Where(x => x.FirstName == Name).ToListAsync();
             });
-            //Add ratings to movies linked to a person (NOT WORKING)
-            app.MapPost("/api/AddRating/", async (MovieAPIContex context, string personName, string movieName ,int rating) =>
-            {
-                var movieRating = await context.MovieRatings
-                    .Include(mr => mr.Movie)
-                    .Include(mr => mr.Person)
-                    .SingleOrDefaultAsync(mr => mr.Person.FirstName == personName);
-                movieRating.Rating = rating;
+            //Add ratings to movies linked to a person DONE
+              app.MapPost("/api/Movies/{movieName}/Ratings", async (MovieAPIContex context, string movieName, int rating) =>
+             {
+                var movie = await context.Movies.SingleOrDefaultAsync(m => m.MovieName == movieName);
+                 
+
+                if (movie == null)
+                {
+                    return Results.NotFound();
+                }
+                var mRating = context.MovieRatings;
+                if(movie.MovieId != null)
+                 {
+                     return Results.BadRequest();
+                 }
+                mRating.Add(new MovieRating { Rating = rating , MovieId = movie.MovieId, PersonId = movie.PersonId });
+
                 await context.SaveChangesAsync();
 
-                return new
-                {
-                    movieRating.Movie.MovieName,
-                    movieRating.Person.FirstName,
-                    movieRating.Rating
-                };
+                return Results.Created($"/api/Movies/Ratings/", rating);
             });
+            //Add Person to new Genre
+            app.MapPost("/api/Person/Genre/", async (MovieAPIContex context, string personName , int genreId) =>
+            {
+                var person = await context.Persons.SingleOrDefaultAsync(p => p.FirstName == personName);
 
+                if (person == null)
+                {
+                    return Results.NotFound();
+                }
+                var pGenre = context.PersonGenres;
+ 
+                pGenre.Add(new PersonGenre { PersonId = person.PersonId , GenreId = genreId});
 
+                await context.SaveChangesAsync();
 
-            app.Run();
+                return Results.Created($"/api/Person/Genre", genreId);
+            });
+            //Add movie links to specific person and genre (Return 2 to dif tabels(?))
+            app.Run();  
         }
 
     }
