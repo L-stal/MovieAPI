@@ -42,12 +42,9 @@ All of the tools used during the development of this program:
 - SQL(LINQ)
 
 ### API Requests
-
 -Filter person buy letters 
 https://localhost:7125/api/Person/FilterByLetter?letters=f
-
 Add the letter to print out every person with that letter in thier name.
-
 -Get Recommendations from a genre
 https://localhost:7125/api/Recommendations?GenreName=action
 
