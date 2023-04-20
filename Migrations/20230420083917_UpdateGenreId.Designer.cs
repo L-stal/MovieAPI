@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MovieAPI.Data;
 
@@ -10,9 +11,11 @@ using MovieAPI.Data;
 namespace MovieAPI.Migrations
 {
     [DbContext(typeof(MovieAPIContex))]
-    partial class MovieAPIContexModelSnapshot : ModelSnapshot
+    [Migration("20230420083917_UpdateGenreId")]
+    partial class UpdateGenreId
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -41,7 +44,7 @@ namespace MovieAPI.Migrations
 
                     b.HasKey("GenreId");
 
-                    b.ToTable("Genres", (string)null);
+                    b.ToTable("Genres");
 
                     b.HasData(
                         new
@@ -190,7 +193,7 @@ namespace MovieAPI.Migrations
 
                     b.HasIndex("PersonId");
 
-                    b.ToTable("Movies", (string)null);
+                    b.ToTable("Movies");
                 });
 
             modelBuilder.Entity("MovieAPI.Models.MovieRating", b =>
@@ -216,7 +219,7 @@ namespace MovieAPI.Migrations
 
                     b.HasIndex("PersonId");
 
-                    b.ToTable("MovieRatings", (string)null);
+                    b.ToTable("MovieRatings");
                 });
 
             modelBuilder.Entity("MovieAPI.Models.Person", b =>
@@ -239,7 +242,7 @@ namespace MovieAPI.Migrations
 
                     b.HasKey("PersonId");
 
-                    b.ToTable("Persons", (string)null);
+                    b.ToTable("Persons");
                 });
 
             modelBuilder.Entity("MovieAPI.Models.PersonGenre", b =>
@@ -262,7 +265,7 @@ namespace MovieAPI.Migrations
 
                     b.HasIndex("PersonId");
 
-                    b.ToTable("PersonGenres", (string)null);
+                    b.ToTable("PersonGenres");
                 });
 
             modelBuilder.Entity("MovieAPI.Models.Movie", b =>
