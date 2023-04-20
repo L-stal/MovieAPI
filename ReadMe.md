@@ -73,10 +73,13 @@ Enter the name of the person
 
 -Get all persons in database
 https://localhost:7125/api/Persons/GetPersons
+
 -Get all genres in database
 https://localhost:7125/api/Genre/GetAllGenre
+
 -Get genres connected to a person 
 https://localhost:7125/api/PersonGenre?Name=leo
+
 -Get Movies connected to a person
 https://localhost:7125/api/Person/GetMovies?Name=Leo
 
