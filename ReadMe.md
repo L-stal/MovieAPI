@@ -1,8 +1,15 @@
+### Moive API 
+This is a simple minimal API built from scratch using a local database and an external API.
+###Fetures
+With this API, you can add, check, and rate movies. You can also search for movies with the same genre as recommendations, which is where The Movie Database API comes in handy.
+
+#### Tools used 
+
 - Insomnia
 
 - Swagger
 
-#### API'S
+#### APIs
 
 - The Movie Database API
 
@@ -14,46 +21,74 @@
 
 - SQL(LINQ)
 
-## API Requests
+####Dependencies
 
+- EF Core
+- EF Core Design
+- EF Core SQL server
+- EF Core Tools
+ -Swashbuckle AspNetCore
+
+
+## API Requests
+```
 -Filter person buy letters
-https://localhost:7125/api/Person/FilterByLetter?letters=f
+/api/Person/FilterByLetter?letters=f
 Add the letter to print out every person with that letter in their name.
-<br>
+```
+```
 -Get Recommendations from a genre
-https://localhost:7125/api/Recommendations?GenreName=action
+/api/Recommendations?GenreName=action
 Add the name of the genre you want recommendations for.
 (You need your own api key from The Movie Database:))
-<br>
+```
+```
 -Get Movies linked to a person
-https://localhost:7125/api/Person/GetMoviesGenre?Name=Leo
+/api/Person/GetMoviesGenre?Name=Leo
 Add the name for the person you want movies from
-<br>
+```
+```
 -Add Movie Link
-https://localhost:7125/api/Person/AddMovieLink?personName=Leo&movieName=Jeepers%20Creepers&genreName=Horror&movieLink=https%3A%2F%2Fwww.themoviedb.org%2Fmovie%2F11351-jeepers-creepers-2
-Add a new movie with a link to database, input name on person, input a movie nane, genre and a link the movie
-<br>
+/api/Person/AddMovieLink?personName=Leo&movieName=Jeepers%20Creepers&genreName=Horror&movieLink=https%3A%2F%2Fwww.themoviedb.org%2Fmovie%2F11351-jeepers-creepers-2
+Add a new movie with a link to database, input name of person,movie name, genre and a link the movie
+```
+```
 -Add a new genre to person
-https://localhost:7125/api/Person/AddGenre?personName=Leo&genreId=10752
+/api/Person/AddGenre?personName=Leo&genreId=10752
 Input name of the person and genre you want to add to the person
-<br>
+```
+```
 -Add Ratings
-https://localhost:7125/api/Movies/AddRatings?movieName=Jeepers%20creepers&rating=10b<
+/api/Movies/AddRatings?movieName=Jeepers%20creepers&rating=10b
 Input movie name and rating
-<br>
--Look up rating connected to a person<
-https://localhost:7125/api/Person/GetRating?Name=leo
+```
+```
+-Look up rating connected to a person
+/api/Person/GetRating?Name=leo
 Enter the name of the person
-<br>
+```
+```
 -Get all persons in database
-https://localhost:7125/api/Persons/GetPersons
+/api/Persons/GetPersons
+```
+```
 -Get all genres in database
-https://localhost:7125/api/Genre/GetAllGenre
+/api/Genre/GetAllGenre
+```
+```
 -Get genres connected to a person
-https://localhost:7125/api/PersonGenre?Name=leo
+/api/PersonGenre?Name=leo
+```
+```
 -Get Movies connected to a person
-https://localhost:7125/api/Person/GetMovies?Name=Leo
-<br>
+/api/Person/GetMovies?Name=Leo
+```
+
+#### Reflections
+I was completely new to making an API. Things started off really slow, and I had a hard time grasping the concept of what a minimal API did and what it should be used for. Because of this, I had a hard time knowing what to look for and how to write it. But after a few days, I clicked and everything made sense.
+
+The areas I could improve on include the names and structure of the code. What I took from this exercise is that even if you don't have a clue on what you are getting yourself into, just start somewhere. Try to write a line that you think is going to work, and you have started. I had really low hopes of even getting this thing done, but it goes to show that only if you just write, magic happens sooner or later. It was a fun experience, and I'll definitely explore minimal APIs more. I started this project in frustrastion, and in the end, it was actually fun, and i even did some extra challanges just for the fun of it.
+
 
 ---
 
