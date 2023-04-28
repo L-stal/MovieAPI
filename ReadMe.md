@@ -21,7 +21,7 @@ With this API, you can add, check, and rate movies. You can also search for movi
 
 - SQL(LINQ)
 
-####Dependencies
+### Dependencies
 
 - EF Core
 - EF Core Design
